@@ -24,7 +24,7 @@ class PoseEstimationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.lblRecognizedText.text = ""
         handPoseRequest.maximumHandCount = 1
     }
     
@@ -104,31 +104,97 @@ class PoseEstimationViewController: UIViewController {
     // this is where the magic happens
     func makeEstimation(){
         if self.lastRecognizedHand != nil{
-            let savedPoses = UserDefaults.standard.array(forKey: "savedLetterPoses") as? [LetterPoseDict]
-            // procházíme pole uložených a porovnáváme
-            guard let poses = savedPoses else {return}
-            for pose in poses{
-                //                    do {
-                //                         let poseDict = try NSKeyedUnarchiver.unarchivedDictionary(keysOfClasses: [VNHumanHandPoseObservation.JointName], objectsOfClasses: [VNRecognizedPoint], from: pose.poseDictData)
-                //                    } catch let error {
-                //                        print(error)
-                //                    }
-                
-                
-                do {
-                    if let loadedPoses = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(pose.poseDictData) as? [VNHumanHandPoseObservation.JointName : VNRecognizedPoint] {
-                        if loadedPoses == self.lastRecognizedHand!{
-                            print("we got a match! With \(pose.letter)")
-                            DispatchQueue.main.async {
-                                self.lblRecognizedText.text? += pose.letter
-                            }
-                            return // neprohledávat pole dál
-                        }
-                    }
-                } catch {
-                    print("Couldn't read file.")
+            let defaults = UserDefaults.standard
+            var savedPoses: [LetterPoseDict]? = nil
+            if let savedPosesFromDefaults = defaults.object(forKey: "savedLetterPoses") as? Data {
+                let decoder = JSONDecoder()
+                if let loadedPoses = try? decoder.decode([LetterPoseDict].self, from: savedPosesFromDefaults) {
+                    savedPoses = loadedPoses
                 }
             }
+            // procházíme pole uložených a porovnáváme
+            guard let poses = savedPoses else {return}
+            
+            var capturedLetterPosesPoints: [[CGPoint?]?] = []
+            var predictedPoints = [CGPoint?]()
+            for (_, recognizedPoint) in self.lastRecognizedHand!{
+                predictedPoints.append(recognizedPoint.location)
+            }
+            for pose in poses{
+                do{
+                    if let loadedLetterCapture = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(pose.poseDictData) as? [VNHumanHandPoseObservation.JointName : VNRecognizedPoint] {
+                        var capturedPointsArray = [CGPoint]()
+                        for (_, recognizedPoint) in loadedLetterCapture{
+                            capturedPointsArray.append(recognizedPoint.location)
+                        }
+                        capturedLetterPosesPoints.append(capturedPointsArray)
+                    }
+                }catch let error {
+                    print(error)
+                }
+                
+            }
+            let matchingRatios = capturedLetterPosesPoints
+                .map { $0?.matchVector(with: predictedPoints) }
+                .compactMap { $0 }
+            
+            var topCapturedPose: LetterPoseDict?
+            var maxMatchingRatio: CGFloat = 0
+            for (matchingRatio, capturedPose) in zip(matchingRatios, poses) {
+                
+                let text = String(format: "%.2f%", matchingRatio*100)
+                print("\(capturedPose.letter) \(text)")
+                if matchingRatio > 0.80 && maxMatchingRatio < matchingRatio {
+                    maxMatchingRatio = matchingRatio
+                    topCapturedPose = capturedPose
+                }
+            }
+            
+            print("we got a match! With \(topCapturedPose?.letter) at \(maxMatchingRatio)")
+            DispatchQueue.main.async {
+                self.lblRecognizedText.text? += topCapturedPose?.letter ?? ""
+            }
+//
+//
+//
+//            for pose in poses{
+//                //                    do {
+//                //                         let poseDict = try NSKeyedUnarchiver.unarchivedDictionary(keysOfClasses: [VNHumanHandPoseObservation.JointName], objectsOfClasses: [VNRecognizedPoint], from: pose.poseDictData)
+//                //                    } catch let error {
+//                //                        print(error)
+//                //                    }
+//
+//
+//                do {
+//                    #warning("json")
+////                    if let t = try NSKeyedUnarchiver.unarchivedDictionary(keysOfClasses: [VNHumanHandPoseObservation.JointName], objectsOfClasses: [VNRecognizedPoint], from: pose.poseDictData){}
+//                    if let loadedLetterCapture = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(pose.poseDictData) as? [VNHumanHandPoseObservation.JointName : VNRecognizedPoint] {
+//
+//
+//                        var capturedPointsArray = [CGPoint]()
+//                        var predictedPoints = [CGPoint]()
+//
+//                        for (_, recognizedPoint) in loadedLetterCapture{
+//                            capturedPointsArray.append(recognizedPoint.location)
+//                        }
+//                        for (_, recognizedPoint) in self.lastRecognizedHand!{
+//                            predictedPoints.append(recognizedPoint.location)
+//                        }
+//
+//                        if loadedLetterCapture == self.lastRecognizedHand!{
+//                            print("we got a match! With \(pose.letter)")
+//                            DispatchQueue.main.async {
+//                                self.lblRecognizedText.text? += pose.letter
+//                            }
+//
+//                        }else{
+//                            print("no luck")
+//                        }
+//                    }
+//                } catch {
+//                    print("Couldn't read file.")
+//                }
+//            }
         }
     }
     
@@ -141,7 +207,9 @@ extension PoseEstimationViewController: AVCaptureVideoDataOutputSampleBufferDele
         // spouští se poté, co je vše ve fci hotovo
         defer {
             DispatchQueue.main.sync {
+                
                 self.renderPoints(pointsToShow: convertedPointsToAVCoords)
+                self.makeEstimation()
             }
         }
         
@@ -172,7 +240,7 @@ extension PoseEstimationViewController: AVCaptureVideoDataOutputSampleBufferDele
                     convertedPointsToAVCoords!.updateValue(modifiedJointPoint, forKey: jointName)
                 }
             }
-            
+            self.lastRecognizedHand = fullRecognizedHand
         } catch {
             cameraFeedSession?.stopRunning()
             let error = AppError.visionError(error: error)

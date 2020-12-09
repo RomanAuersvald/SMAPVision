@@ -104,11 +104,45 @@ class PoseCaptureViewController: UIViewController {
     @IBAction func capturePose(_ sender: Any) {
         if self.lastRecognizedHand != nil{
             do{
-            let encodedData = try NSKeyedArchiver.archivedData(withRootObject: self.lastRecognizedHand!, requiringSecureCoding: false)
+                let encoder = JSONEncoder()
+                // data ruky kódovaná jako Data
+                let encodedData = try NSKeyedArchiver.archivedData(withRootObject: self.lastRecognizedHand!, requiringSecureCoding: false)
+                // vytvořen objekt, který nese info o datu, písmenu a datech ruky
                 let savingDict = LetterPoseDict(letter: self.poseForLetter, poseDictData: encodedData)
-                UserDefaults.standard.set(savingDict, forKey: "savedLetterPoses")
-                print(UserDefaults.standard.synchronize()) // je potřeba?
-                self.dismiss(animated: true, completion: nil)
+                //                načíst uložené pole a do něj přidat prvek
+                
+                //                if let encoded = try? encoder.encode(savingDict) {
+                let defaults = UserDefaults.standard
+                // načtení již uložených
+                if let savedPosesFromDefaults = defaults.object(forKey: "savedLetterPoses") as? Data {
+                    let decoder = JSONDecoder()
+                    if let loadedPoses = try? decoder.decode([LetterPoseDict].self, from: savedPosesFromDefaults) {
+                        var new = loadedPoses
+                        new.append(savingDict)
+                        if let encoded = try? encoder.encode(new) {
+                            print(encoded)
+                            defaults.set(encoded, forKey: "savedLetterPoses")
+                        }
+                    }
+                }else{
+                    // nejsou zatím žádné uložené, uložíme aktuální
+                    if let encoded = try? encoder.encode([savingDict]) {
+                        print(encoded)
+                        defaults.set(encoded, forKey: "savedLetterPoses")
+                    }
+                }
+                //                    defaults.set(encoded, forKey: "savedLetterPoses")
+                DispatchQueue.main.async {
+                    self.navigationController?.popToRootViewController(animated: true)
+                    //                        self.dismiss(animated: true, completion: nil)
+                }
+                //                }
+                
+                
+                //                UserDefaults.standard.set(savingDict, forKey: "savedLetterPoses")
+                                print(UserDefaults.standard.synchronize()) // je potřeba?
+                
+                
             }catch let error{
                 print(error.localizedDescription)
             }
@@ -116,7 +150,7 @@ class PoseCaptureViewController: UIViewController {
     }
 }
 
-public struct LetterPoseDict{
+public struct LetterPoseDict: Codable{
     var letter: String
     var dateTaken: Date = Date()
     var poseDictData: Data
@@ -160,6 +194,7 @@ extension PoseCaptureViewController: AVCaptureVideoDataOutputSampleBufferDelegat
                     convertedPointsToAVCoords!.updateValue(modifiedJointPoint, forKey: jointName)
                 }
             }
+            self.lastRecognizedHand = fullRecognizedHand
             
         } catch {
             cameraFeedSession?.stopRunning()

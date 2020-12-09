@@ -28,7 +28,14 @@ class PoseListTableViewController: UITableViewController {
     }
     
     func loadPosesList(){
-        self.savedPoses = UserDefaults.standard.array(forKey: "savedLetterPoses") as? [LetterPoseDict]
+        let defaults = UserDefaults.standard
+        if let savedPosesFromDefaults = defaults.object(forKey: "savedLetterPoses") as? Data {
+            let decoder = JSONDecoder()
+            if let loadedPoses = try? decoder.decode([LetterPoseDict].self, from: savedPosesFromDefaults) {
+                self.savedPoses = loadedPoses
+            }
+        }
+//        self.savedPoses = UserDefaults.standard.array(forKey: "savedLetterPoses") as? [LetterPoseDict]
     }
     
     override func viewDidAppear(_ animated: Bool) {

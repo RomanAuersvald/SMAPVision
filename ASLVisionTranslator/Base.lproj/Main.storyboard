@@ -12,7 +12,7 @@
         <scene sceneID="xbi-O1-bEK">
             <objects>
                 <viewController id="nMj-jb-Zyo" customClass="PoseEstimationViewController" customModule="ASLVisionTranslator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="nX8-lh-AW8">
+                    <view key="view" contentMode="scaleToFill" id="nX8-lh-AW8" customClass="CameraView" customModule="ASLVisionTranslator" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -47,7 +47,7 @@
         <!--Poses list-->
         <scene sceneID="ey9-t8-CYo">
             <objects>
-                <tableViewController id="M4d-y6-elH" sceneMemberID="viewController">
+                <tableViewController id="M4d-y6-elH" customClass="PoseListTableViewController" customModule="ASLVisionTranslator" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fYX-H4-mY9">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,7 +86,7 @@
                     <navigationItem key="navigationItem" title="Poses list" id="QrH-DV-6Xf">
                         <barButtonItem key="rightBarButtonItem" title="New pose" id="9hY-Ws-C0u">
                             <connections>
-                                <action selector="newPoseAction:" destination="qRq-FO-mid" id="jGr-VJ-IkY"/>
+                                <action selector="newPoseAction:" destination="M4d-y6-elH" id="LjR-Mr-T82"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -95,7 +95,6 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdj-Zt-c1c" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="qRq-FO-mid" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2657" y="-228"/>
         </scene>
@@ -103,7 +102,7 @@
         <scene sceneID="V6b-TX-rkh">
             <objects>
                 <viewController id="oif-Kh-3Y8" customClass="PoseCaptureViewController" customModule="ASLVisionTranslator" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sHr-cf-2ym">
+                    <view key="view" contentMode="scaleToFill" id="sHr-cf-2ym" customClass="CameraView" customModule="ASLVisionTranslator" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="O9Y-h7-UQl"/>
@@ -112,13 +111,12 @@
                     <navigationItem key="navigationItem" id="Xac-mR-Bbg">
                         <barButtonItem key="rightBarButtonItem" title="Capture pose" id="Xar-2q-IqH">
                             <connections>
-                                <action selector="capturePose:" destination="s2F-PW-de3" id="jfu-OX-sBs"/>
+                                <action selector="capturePose:" destination="oif-Kh-3Y8" id="euR-fd-mDz"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="P1S-3A-XI5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="s2F-PW-de3" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="3658" y="-211"/>
         </scene>
