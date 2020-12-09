@@ -117,14 +117,18 @@ class PoseEstimationViewController: UIViewController {
             
             var capturedLetterPosesPoints: [[CGPoint?]?] = []
             var predictedPoints = [CGPoint?]()
-            for (_, recognizedPoint) in self.lastRecognizedHand!{
+            // sort - because we dont trust vision to give the same dict all the time
+            let lastRecognizedHandSorted = self.lastRecognizedHand!.sorted { $0.0.rawValue.rawValue < $1.0.rawValue.rawValue }
+            for (_, recognizedPoint) in lastRecognizedHandSorted{
                 predictedPoints.append(recognizedPoint.location)
             }
             for pose in poses{
                 do{
                     if let loadedLetterCapture = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(pose.poseDictData) as? [VNHumanHandPoseObservation.JointName : VNRecognizedPoint] {
                         var capturedPointsArray = [CGPoint]()
-                        for (_, recognizedPoint) in loadedLetterCapture{
+                        // sort - because we dont trust vision to give the same dict all the time
+                        let loadedLetterCaptureSorted = loadedLetterCapture.sorted { $0.0.rawValue.rawValue < $1.0.rawValue.rawValue }
+                        for (_, recognizedPoint) in loadedLetterCaptureSorted{
                             capturedPointsArray.append(recognizedPoint.location)
                         }
                         capturedLetterPosesPoints.append(capturedPointsArray)
@@ -134,6 +138,7 @@ class PoseEstimationViewController: UIViewController {
                 }
                 
             }
+            
             let matchingRatios = capturedLetterPosesPoints
                 .map { $0?.matchVector(with: predictedPoints) }
                 .compactMap { $0 }
