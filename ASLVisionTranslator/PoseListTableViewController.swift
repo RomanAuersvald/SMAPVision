@@ -35,7 +35,6 @@ class PoseListTableViewController: UITableViewController {
                 self.savedPoses = loadedPoses
             }
         }
-//        self.savedPoses = UserDefaults.standard.array(forKey: "savedLetterPoses") as? [LetterPoseDict]
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -52,11 +51,14 @@ class PoseListTableViewController: UITableViewController {
         return self.savedPoses?.count ?? 0
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 80
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ident", for: indexPath)
-        cell.textLabel?.text = self.savedPoses?[indexPath.row].letter
-        cell.detailTextLabel?.text = String(describing: self.savedPoses?[indexPath.row].dateTaken)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "ident", for: indexPath) as! LetterDateTableViewCell
+        cell.lblLetter?.text = self.savedPoses![indexPath.row].letter
+        cell.lblDate?.text = self.savedPoses![indexPath.row].dateTaken.toString(dateFormat: .short, timeFormat: .medium)
         cell.accessoryType = .none
 
         return cell
@@ -126,4 +128,13 @@ class PoseListTableViewController: UITableViewController {
         }
     }
 
+}
+
+extension Date{
+    func toString(dateFormat: DateFormatter.Style, timeFormat: DateFormatter.Style) -> String{
+        let formatter = DateFormatter()
+        formatter.dateStyle = dateFormat
+        formatter.timeStyle = timeFormat
+        return formatter.string(from: self)
+    }
 }

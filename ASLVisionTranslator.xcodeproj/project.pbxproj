@@ -18,6 +18,7 @@
 		3022A61A2577B9650014DC37 /* PoseEstimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022A6192577B9650014DC37 /* PoseEstimationViewController.swift */; };
 		3022A6202577C0700014DC37 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022A61F2577C0700014DC37 /* CameraView.swift */; };
 		30DC63B725813993009F0EE1 /* etc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC63B625813993009F0EE1 /* etc.swift */; };
+		30DC63BC25815606009F0EE1 /* LetterDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC63BB25815606009F0EE1 /* LetterDateTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		3022A6192577B9650014DC37 /* PoseEstimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimationViewController.swift; sourceTree = "<group>"; };
 		3022A61F2577C0700014DC37 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		30DC63B625813993009F0EE1 /* etc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etc.swift; sourceTree = "<group>"; };
+		30DC63BB25815606009F0EE1 /* LetterDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterDateTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +115,7 @@
 				3022A6192577B9650014DC37 /* PoseEstimationViewController.swift */,
 				3022A61F2577C0700014DC37 /* CameraView.swift */,
 				30DC63B625813993009F0EE1 /* etc.swift */,
+				30DC63BB25815606009F0EE1 /* LetterDateTableViewCell.swift */,
 			);
 			path = ASLVisionTranslator;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3022A6102577B93D0014DC37 /* PoseCaptureViewController.swift in Sources */,
+				30DC63BC25815606009F0EE1 /* LetterDateTableViewCell.swift in Sources */,
 				3022A5DE2577B6DB0014DC37 /* ViewController.swift in Sources */,
 				30DC63B725813993009F0EE1 /* etc.swift in Sources */,
 				3022A61A2577B9650014DC37 /* PoseEstimationViewController.swift in Sources */,

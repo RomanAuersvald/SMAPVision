@@ -140,7 +140,7 @@ class PoseEstimationViewController: UIViewController {
                 }
                 
             }
-            
+            // MARK:- The real witchcraft
             let matchingRatios = capturedLetterPosesPoints
                 .map { $0?.matchVector(with: predictedPoints) }
                 .compactMap { $0 }
@@ -169,48 +169,6 @@ class PoseEstimationViewController: UIViewController {
                     
                 }
             }
-
-//
-//
-//
-//            for pose in poses{
-//                //                    do {
-//                //                         let poseDict = try NSKeyedUnarchiver.unarchivedDictionary(keysOfClasses: [VNHumanHandPoseObservation.JointName], objectsOfClasses: [VNRecognizedPoint], from: pose.poseDictData)
-//                //                    } catch let error {
-//                //                        print(error)
-//                //                    }
-//
-//
-//                do {
-//                    #warning("json")
-////                    if let t = try NSKeyedUnarchiver.unarchivedDictionary(keysOfClasses: [VNHumanHandPoseObservation.JointName], objectsOfClasses: [VNRecognizedPoint], from: pose.poseDictData){}
-//                    if let loadedLetterCapture = try NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(pose.poseDictData) as? [VNHumanHandPoseObservation.JointName : VNRecognizedPoint] {
-//
-//
-//                        var capturedPointsArray = [CGPoint]()
-//                        var predictedPoints = [CGPoint]()
-//
-//                        for (_, recognizedPoint) in loadedLetterCapture{
-//                            capturedPointsArray.append(recognizedPoint.location)
-//                        }
-//                        for (_, recognizedPoint) in self.lastRecognizedHand!{
-//                            predictedPoints.append(recognizedPoint.location)
-//                        }
-//
-//                        if loadedLetterCapture == self.lastRecognizedHand!{
-//                            print("we got a match! With \(pose.letter)")
-//                            DispatchQueue.main.async {
-//                                self.lblRecognizedText.text? += pose.letter
-//                            }
-//
-//                        }else{
-//                            print("no luck")
-//                        }
-//                    }
-//                } catch {
-//                    print("Couldn't read file.")
-//                }
-//            }
         }
     }
     
