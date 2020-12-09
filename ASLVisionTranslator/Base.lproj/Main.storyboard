@@ -18,25 +18,39 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RecognizedText" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c1b-g3-kl5">
                                 <rect key="frame" x="20" y="763" width="374" height="50"/>
-                                <color key="backgroundColor" systemColor="systemGray2Color"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="ol1-qI-jOb"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" systemColor="systemRedColor"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPW-Pw-IR6">
+                                <rect key="frame" x="0.0" y="553" width="404" height="200"/>
+                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="c6L-1F-K7d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="60"/>
+                                <color key="textColor" systemColor="systemGreenColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wfk-qc-OQJ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="hPW-Pw-IR6" firstAttribute="leading" secondItem="Wfk-qc-OQJ" secondAttribute="leading" id="79L-bq-Gaz"/>
+                            <constraint firstItem="Wfk-qc-OQJ" firstAttribute="trailing" secondItem="hPW-Pw-IR6" secondAttribute="trailing" constant="10" id="Ga6-CQ-n2c"/>
                             <constraint firstItem="c1b-g3-kl5" firstAttribute="leading" secondItem="Wfk-qc-OQJ" secondAttribute="leading" constant="20" id="SS5-NR-Cw7"/>
+                            <constraint firstItem="c1b-g3-kl5" firstAttribute="top" secondItem="hPW-Pw-IR6" secondAttribute="bottom" constant="10" id="c1W-7V-wTJ"/>
                             <constraint firstItem="Wfk-qc-OQJ" firstAttribute="trailing" secondItem="c1b-g3-kl5" secondAttribute="trailing" constant="20" id="sWd-fx-y98"/>
                             <constraint firstItem="c1b-g3-kl5" firstAttribute="bottom" secondItem="Wfk-qc-OQJ" secondAttribute="bottom" id="tp8-3f-R9M"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Pose estimation" id="PG8-PM-cpb"/>
                     <connections>
+                        <outlet property="lblRecognizedLetterWithAccuracy" destination="hPW-Pw-IR6" id="GTA-ld-ObJ"/>
                         <outlet property="lblRecognizedText" destination="c1b-g3-kl5" id="i8M-zR-uar"/>
                     </connections>
                 </viewController>
@@ -162,11 +176,8 @@
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
-        <systemColor name="systemGray2Color">
-            <color red="0.68235294117647061" green="0.68235294117647061" blue="0.69803921568627447" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -20,11 +20,13 @@ class PoseEstimationViewController: UIViewController {
     
     var lastRecognizedHand: [VNHumanHandPoseObservation.JointName : VNRecognizedPoint]?
     
+    @IBOutlet weak var lblRecognizedLetterWithAccuracy: UILabel!
     @IBOutlet weak var lblRecognizedText: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.lblRecognizedText.text = ""
+        self.lblRecognizedLetterWithAccuracy.text = ""
         handPoseRequest.maximumHandCount = 1
     }
     
@@ -147,18 +149,27 @@ class PoseEstimationViewController: UIViewController {
             var maxMatchingRatio: CGFloat = 0
             for (matchingRatio, capturedPose) in zip(matchingRatios, poses) {
                 
-                let text = String(format: "%.2f%", matchingRatio*100)
-                print("\(capturedPose.letter) \(text)")
+                
                 if matchingRatio > 0.80 && maxMatchingRatio < matchingRatio {
                     maxMatchingRatio = matchingRatio
                     topCapturedPose = capturedPose
                 }
             }
-            
-            print("we got a match! With \(topCapturedPose?.letter) at \(maxMatchingRatio)")
-            DispatchQueue.main.async {
-                self.lblRecognizedText.text? += topCapturedPose?.letter ?? ""
+            if topCapturedPose != nil{ // shit happend
+                let accuracy = String(format: "%.2f%", maxMatchingRatio*100)
+                print("we got a match! With \(topCapturedPose!.letter) at \(accuracy)")
+                DispatchQueue.main.async {
+                    // this makes the magic of not having milion same letters after another
+                    if let capturedConfirmedLetter = topCapturedPose?.letter{
+                        self.lblRecognizedLetterWithAccuracy.text = "\(capturedConfirmedLetter) at \(accuracy)"
+                        if self.lblRecognizedText.text?.last != capturedConfirmedLetter.last{
+                            self.lblRecognizedText.text? += capturedConfirmedLetter
+                        }
+                    }
+                    
+                }
             }
+
 //
 //
 //
