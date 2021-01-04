@@ -8,71 +8,43 @@
 
 /* Begin PBXBuildFile section */
 		3022A5DA2577B6DB0014DC37 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022A5D92577B6DB0014DC37 /* AppDelegate.swift */; };
-		3022A5DC2577B6DB0014DC37 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 3022A5DB2577B6DB0014DC37 /* art.scnassets */; };
-		3022A5DE2577B6DB0014DC37 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022A5DD2577B6DB0014DC37 /* ViewController.swift */; };
 		3022A5E12577B6DB0014DC37 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3022A5DF2577B6DB0014DC37 /* Main.storyboard */; };
 		3022A5E32577B6DC0014DC37 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3022A5E22577B6DC0014DC37 /* Assets.xcassets */; };
 		3022A5E62577B6DC0014DC37 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3022A5E42577B6DC0014DC37 /* LaunchScreen.storyboard */; };
-		3022A6102577B93D0014DC37 /* PoseCaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022A60F2577B93D0014DC37 /* PoseCaptureViewController.swift */; };
 		3022A6152577B94F0014DC37 /* PoseListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022A6142577B94F0014DC37 /* PoseListTableViewController.swift */; };
 		3022A61A2577B9650014DC37 /* PoseEstimationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022A6192577B9650014DC37 /* PoseEstimationViewController.swift */; };
 		3022A6202577C0700014DC37 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3022A61F2577C0700014DC37 /* CameraView.swift */; };
-		30DC63B725813993009F0EE1 /* etc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC63B625813993009F0EE1 /* etc.swift */; };
+		30884E5425A35DAC002A8476 /* PoseCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30884E5325A35DAC002A8476 /* PoseCapture.swift */; };
+		30884E5925A35DFF002A8476 /* ASLLetterPose.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30884E5825A35DFF002A8476 /* ASLLetterPose.swift */; };
+		30884E5E25A35E20002A8476 /* PoseEstimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30884E5D25A35E20002A8476 /* PoseEstimation.swift */; };
+		30884E6325A35EC4002A8476 /* CameraOutputVisionProcessing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30884E6225A35EC4002A8476 /* CameraOutputVisionProcessing.swift */; };
+		30884E8925A36196002A8476 /* PoseDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30884E8825A36196002A8476 /* PoseDataManager.swift */; };
+		30DC63B725813993009F0EE1 /* VectorMath.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC63B625813993009F0EE1 /* VectorMath.swift */; };
 		30DC63BC25815606009F0EE1 /* LetterDateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30DC63BB25815606009F0EE1 /* LetterDateTableViewCell.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		3022A5ED2577B6DC0014DC37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3022A5CE2577B6DB0014DC37 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3022A5D52577B6DB0014DC37;
-			remoteInfo = ASLVisionTranslator;
-		};
-		3022A5F82577B6DC0014DC37 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 3022A5CE2577B6DB0014DC37 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 3022A5D52577B6DB0014DC37;
-			remoteInfo = ASLVisionTranslator;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		3022A5D62577B6DB0014DC37 /* ASLVisionTranslator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ASLVisionTranslator.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3022A5D92577B6DB0014DC37 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3022A5DB2577B6DB0014DC37 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
-		3022A5DD2577B6DB0014DC37 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3022A5E02577B6DB0014DC37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3022A5E22577B6DC0014DC37 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3022A5E52577B6DC0014DC37 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3022A5E72577B6DC0014DC37 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		3022A5EC2577B6DC0014DC37 /* ASLVisionTranslatorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASLVisionTranslatorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3022A5F72577B6DC0014DC37 /* ASLVisionTranslatorUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ASLVisionTranslatorUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3022A60F2577B93D0014DC37 /* PoseCaptureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseCaptureViewController.swift; sourceTree = "<group>"; };
 		3022A6142577B94F0014DC37 /* PoseListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseListTableViewController.swift; sourceTree = "<group>"; };
 		3022A6192577B9650014DC37 /* PoseEstimationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimationViewController.swift; sourceTree = "<group>"; };
 		3022A61F2577C0700014DC37 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
-		30DC63B625813993009F0EE1 /* etc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = etc.swift; sourceTree = "<group>"; };
+		30884E5325A35DAC002A8476 /* PoseCapture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseCapture.swift; sourceTree = "<group>"; };
+		30884E5825A35DFF002A8476 /* ASLLetterPose.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASLLetterPose.swift; sourceTree = "<group>"; };
+		30884E5D25A35E20002A8476 /* PoseEstimation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseEstimation.swift; sourceTree = "<group>"; };
+		30884E6225A35EC4002A8476 /* CameraOutputVisionProcessing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraOutputVisionProcessing.swift; sourceTree = "<group>"; };
+		30884E8825A36196002A8476 /* PoseDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PoseDataManager.swift; sourceTree = "<group>"; };
+		30DC63B625813993009F0EE1 /* VectorMath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VectorMath.swift; sourceTree = "<group>"; };
 		30DC63BB25815606009F0EE1 /* LetterDateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterDateTableViewCell.swift; sourceTree = "<group>"; };
+		30DC63C02582100E009F0EE1 /* ASLVisionTranslator.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ASLVisionTranslator.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		3022A5D32577B6DB0014DC37 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3022A5E92577B6DC0014DC37 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3022A5F42577B6DC0014DC37 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -94,8 +66,6 @@
 			isa = PBXGroup;
 			children = (
 				3022A5D62577B6DB0014DC37 /* ASLVisionTranslator.app */,
-				3022A5EC2577B6DC0014DC37 /* ASLVisionTranslatorTests.xctest */,
-				3022A5F72577B6DC0014DC37 /* ASLVisionTranslatorUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -103,21 +73,80 @@
 		3022A5D82577B6DB0014DC37 /* ASLVisionTranslator */ = {
 			isa = PBXGroup;
 			children = (
+				30DC63C02582100E009F0EE1 /* ASLVisionTranslator.entitlements */,
 				3022A5D92577B6DB0014DC37 /* AppDelegate.swift */,
-				3022A5DB2577B6DB0014DC37 /* art.scnassets */,
-				3022A5DD2577B6DB0014DC37 /* ViewController.swift */,
-				3022A5DF2577B6DB0014DC37 /* Main.storyboard */,
 				3022A5E22577B6DC0014DC37 /* Assets.xcassets */,
-				3022A5E42577B6DC0014DC37 /* LaunchScreen.storyboard */,
 				3022A5E72577B6DC0014DC37 /* Info.plist */,
-				3022A60F2577B93D0014DC37 /* PoseCaptureViewController.swift */,
-				3022A6142577B94F0014DC37 /* PoseListTableViewController.swift */,
-				3022A6192577B9650014DC37 /* PoseEstimationViewController.swift */,
-				3022A61F2577C0700014DC37 /* CameraView.swift */,
-				30DC63B625813993009F0EE1 /* etc.swift */,
-				30DC63BB25815606009F0EE1 /* LetterDateTableViewCell.swift */,
+				30884E6D25A35FF6002A8476 /* UI */,
+				30884E6E25A36013002A8476 /* ViewControllers */,
+				30884E7F25A360D6002A8476 /* PoseEstimationVCExtensions */,
+				30DC63B625813993009F0EE1 /* VectorMath.swift */,
+				30884E7725A3604B002A8476 /* Model */,
 			);
 			path = ASLVisionTranslator;
+			sourceTree = "<group>";
+		};
+		30884E6D25A35FF6002A8476 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				30884E7225A3602D002A8476 /* Classes */,
+				30884E7625A3603B002A8476 /* Storyboards */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		30884E6E25A36013002A8476 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				3022A6142577B94F0014DC37 /* PoseListTableViewController.swift */,
+				3022A6192577B9650014DC37 /* PoseEstimationViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		30884E7225A3602D002A8476 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				30DC63BB25815606009F0EE1 /* LetterDateTableViewCell.swift */,
+				3022A61F2577C0700014DC37 /* CameraView.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		30884E7625A3603B002A8476 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				3022A5DF2577B6DB0014DC37 /* Main.storyboard */,
+				3022A5E42577B6DC0014DC37 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		30884E7725A3604B002A8476 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				30884E5825A35DFF002A8476 /* ASLLetterPose.swift */,
+				30884E8825A36196002A8476 /* PoseDataManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		30884E7B25A36063002A8476 /* Pose Capture_Estimation */ = {
+			isa = PBXGroup;
+			children = (
+				30884E5325A35DAC002A8476 /* PoseCapture.swift */,
+				30884E5D25A35E20002A8476 /* PoseEstimation.swift */,
+			);
+			path = "Pose Capture_Estimation";
+			sourceTree = "<group>";
+		};
+		30884E7F25A360D6002A8476 /* PoseEstimationVCExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				30884E7B25A36063002A8476 /* Pose Capture_Estimation */,
+				30884E6225A35EC4002A8476 /* CameraOutputVisionProcessing.swift */,
+			);
+			path = PoseEstimationVCExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,42 +169,6 @@
 			productReference = 3022A5D62577B6DB0014DC37 /* ASLVisionTranslator.app */;
 			productType = "com.apple.product-type.application";
 		};
-		3022A5EB2577B6DC0014DC37 /* ASLVisionTranslatorTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3022A6032577B6DC0014DC37 /* Build configuration list for PBXNativeTarget "ASLVisionTranslatorTests" */;
-			buildPhases = (
-				3022A5E82577B6DC0014DC37 /* Sources */,
-				3022A5E92577B6DC0014DC37 /* Frameworks */,
-				3022A5EA2577B6DC0014DC37 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3022A5EE2577B6DC0014DC37 /* PBXTargetDependency */,
-			);
-			name = ASLVisionTranslatorTests;
-			productName = ASLVisionTranslatorTests;
-			productReference = 3022A5EC2577B6DC0014DC37 /* ASLVisionTranslatorTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		3022A5F62577B6DC0014DC37 /* ASLVisionTranslatorUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 3022A6062577B6DC0014DC37 /* Build configuration list for PBXNativeTarget "ASLVisionTranslatorUITests" */;
-			buildPhases = (
-				3022A5F32577B6DC0014DC37 /* Sources */,
-				3022A5F42577B6DC0014DC37 /* Frameworks */,
-				3022A5F52577B6DC0014DC37 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				3022A5F92577B6DC0014DC37 /* PBXTargetDependency */,
-			);
-			name = ASLVisionTranslatorUITests;
-			productName = ASLVisionTranslatorUITests;
-			productReference = 3022A5F72577B6DC0014DC37 /* ASLVisionTranslatorUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -187,14 +180,6 @@
 				TargetAttributes = {
 					3022A5D52577B6DB0014DC37 = {
 						CreatedOnToolsVersion = 12.2;
-					};
-					3022A5EB2577B6DC0014DC37 = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 3022A5D52577B6DB0014DC37;
-					};
-					3022A5F62577B6DC0014DC37 = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 3022A5D52577B6DB0014DC37;
 					};
 				};
 			};
@@ -212,8 +197,6 @@
 			projectRoot = "";
 			targets = (
 				3022A5D52577B6DB0014DC37 /* ASLVisionTranslator */,
-				3022A5EB2577B6DC0014DC37 /* ASLVisionTranslatorTests */,
-				3022A5F62577B6DC0014DC37 /* ASLVisionTranslatorUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -223,24 +206,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3022A5DC2577B6DB0014DC37 /* art.scnassets in Resources */,
 				3022A5E62577B6DC0014DC37 /* LaunchScreen.storyboard in Resources */,
 				3022A5E32577B6DC0014DC37 /* Assets.xcassets in Resources */,
 				3022A5E12577B6DB0014DC37 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3022A5EA2577B6DC0014DC37 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3022A5F52577B6DC0014DC37 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,45 +219,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3022A6102577B93D0014DC37 /* PoseCaptureViewController.swift in Sources */,
 				30DC63BC25815606009F0EE1 /* LetterDateTableViewCell.swift in Sources */,
-				3022A5DE2577B6DB0014DC37 /* ViewController.swift in Sources */,
-				30DC63B725813993009F0EE1 /* etc.swift in Sources */,
+				30DC63B725813993009F0EE1 /* VectorMath.swift in Sources */,
+				30884E5E25A35E20002A8476 /* PoseEstimation.swift in Sources */,
+				30884E5925A35DFF002A8476 /* ASLLetterPose.swift in Sources */,
 				3022A61A2577B9650014DC37 /* PoseEstimationViewController.swift in Sources */,
 				3022A6202577C0700014DC37 /* CameraView.swift in Sources */,
 				3022A6152577B94F0014DC37 /* PoseListTableViewController.swift in Sources */,
+				30884E6325A35EC4002A8476 /* CameraOutputVisionProcessing.swift in Sources */,
+				30884E8925A36196002A8476 /* PoseDataManager.swift in Sources */,
 				3022A5DA2577B6DB0014DC37 /* AppDelegate.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3022A5E82577B6DC0014DC37 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3022A5F32577B6DC0014DC37 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				30884E5425A35DAC002A8476 /* PoseCapture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		3022A5EE2577B6DC0014DC37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3022A5D52577B6DB0014DC37 /* ASLVisionTranslator */;
-			targetProxy = 3022A5ED2577B6DC0014DC37 /* PBXContainerItemProxy */;
-		};
-		3022A5F92577B6DC0014DC37 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 3022A5D52577B6DB0014DC37 /* ASLVisionTranslator */;
-			targetProxy = 3022A5F82577B6DC0014DC37 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		3022A5DF2577B6DB0014DC37 /* Main.storyboard */ = {
@@ -432,6 +376,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ASLVisionTranslator/ASLVisionTranslator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2856EU3Z8S;
 				INFOPLIST_FILE = ASLVisionTranslator/Info.plist;
@@ -441,6 +386,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cz.aurotech.ASLVisionTranslator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -451,6 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = ASLVisionTranslator/ASLVisionTranslator.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2856EU3Z8S;
 				INFOPLIST_FILE = ASLVisionTranslator/Info.plist;
@@ -460,92 +407,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cz.aurotech.ASLVisionTranslator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
-		3022A6042577B6DC0014DC37 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2856EU3Z8S;
-				INFOPLIST_FILE = ASLVisionTranslatorTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = cz.aurotech.ASLVisionTranslatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASLVisionTranslator.app/ASLVisionTranslator";
-			};
-			name = Debug;
-		};
-		3022A6052577B6DC0014DC37 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2856EU3Z8S;
-				INFOPLIST_FILE = ASLVisionTranslatorTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = cz.aurotech.ASLVisionTranslatorTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ASLVisionTranslator.app/ASLVisionTranslator";
-			};
-			name = Release;
-		};
-		3022A6072577B6DC0014DC37 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2856EU3Z8S;
-				INFOPLIST_FILE = ASLVisionTranslatorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = cz.aurotech.ASLVisionTranslatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ASLVisionTranslator;
-			};
-			name = Debug;
-		};
-		3022A6082577B6DC0014DC37 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 2856EU3Z8S;
-				INFOPLIST_FILE = ASLVisionTranslatorUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = cz.aurotech.ASLVisionTranslatorUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ASLVisionTranslator;
 			};
 			name = Release;
 		};
@@ -566,24 +430,6 @@
 			buildConfigurations = (
 				3022A6012577B6DC0014DC37 /* Debug */,
 				3022A6022577B6DC0014DC37 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3022A6032577B6DC0014DC37 /* Build configuration list for PBXNativeTarget "ASLVisionTranslatorTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3022A6042577B6DC0014DC37 /* Debug */,
-				3022A6052577B6DC0014DC37 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		3022A6062577B6DC0014DC37 /* Build configuration list for PBXNativeTarget "ASLVisionTranslatorUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				3022A6072577B6DC0014DC37 /* Debug */,
-				3022A6082577B6DC0014DC37 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

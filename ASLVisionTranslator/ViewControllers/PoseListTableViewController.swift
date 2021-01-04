@@ -9,7 +9,7 @@ import UIKit
 
 class PoseListTableViewController: UITableViewController {
     
-    var savedPoses : [LetterPoseDict]? {
+    var savedPoses : [ASLLetterPose]? {
         didSet{
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -22,19 +22,22 @@ class PoseListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         loadPosesList()
         
          self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
     func loadPosesList(){
-        let defaults = UserDefaults.standard
-        if let savedPosesFromDefaults = defaults.object(forKey: "savedLetterPoses") as? Data {
-            let decoder = JSONDecoder()
-            if let loadedPoses = try? decoder.decode([LetterPoseDict].self, from: savedPosesFromDefaults) {
-                self.savedPoses = loadedPoses
-            }
-        }
+        self.savedPoses = PoseDataManager.shared.loadData()
+        
+//        let defaults = UserDefaults.standard
+//        if let savedPosesFromDefaults = defaults.object(forKey: "savedLetterPoses") as? Data {
+//            let decoder = JSONDecoder()
+//            if let loadedPoses = try? decoder.decode([ASLLetterPose].self, from: savedPosesFromDefaults) {
+//                self.savedPoses = loadedPoses
+//            }
+//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -66,22 +69,23 @@ class PoseListTableViewController: UITableViewController {
     
 
     @IBAction func newPoseAction(_ sender: Any) {
-        
         let ac = UIAlertController(title: "Název nového znaku", message: nil, preferredStyle: .alert)
-            ac.addTextField()
-
-            let submitAction = UIAlertAction(title: "ok", style: .default) { [unowned ac] _ in
-                let answer = ac.textFields![0]
-                if answer.text != ""{
-                    self.newPoseLetter = answer.text
-                    self.performSegue(withIdentifier: "newPoseController", sender: self)
-                }
-                
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: "OK", style: .default) { [unowned ac] _ in
+            let answer = ac.textFields![0]
+            if answer.text != ""{
+                self.newPoseLetter = answer.text
+                self.performSegue(withIdentifier: "captureNewPose", sender: self)
             }
-
-            ac.addAction(submitAction)
-
-            present(ac, animated: true)
+        }
+        let cancelAction = UIAlertAction(title: "Zrušit", style: .cancel){
+            [unowned ac] _ in
+            ac.dismiss(animated: true, completion: nil)
+        }
+        ac.addAction(submitAction)
+        ac.addAction(cancelAction)
+        present(ac, animated: true)
     }
     
     // Override to support conditional editing of the table view.
@@ -97,34 +101,19 @@ class PoseListTableViewController: UITableViewController {
         if editingStyle == .delete {
             let letterToDelete = self.savedPoses?[indexPath.row]
             if letterToDelete != nil{
-                UserDefaults.standard.removeObject(forKey: letterToDelete!.letter)
+                let result = PoseDataManager.shared.deletePoseData(poseToDelete: letterToDelete!)
+                let _ = result.map{if $0 == 1 {
+                    self.loadPosesList()
+                }}
             }
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
         }
     }
     
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "newPoseController"{
-            let dest = segue.destination as! PoseCaptureViewController
+        if segue.identifier == "captureNewPose"{
+            let dest = (segue.destination as! UINavigationController).topViewController as! PoseEstimationViewController
             dest.poseForLetter = self.newPoseLetter!
+            dest.poseMatching = false
         }
     }
 
