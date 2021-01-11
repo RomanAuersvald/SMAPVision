@@ -72,6 +72,7 @@ extension PoseEstimationViewController{
                         if self.lblRecognizedText.text?.last != capturedConfirmedLetter.last{
                             self.lblRecognizedText.text? += capturedConfirmedLetter
                         }
+                        self.updateAveregeRecognitionLabel(for: topCapturedPose!.letter, withAccuracy: Float(maxMatchingRatio))
                     }
                 }
 //                ----END QUEUE

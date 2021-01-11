@@ -25,9 +25,28 @@ class PoseEstimationViewController: UIViewController {
     
     var lastRecognizedHand: [VNHumanHandPoseObservation.JointName : VNRecognizedPoint]?
     
+    var lastRecognizedLetter: String = ""
+    var lastRecognizedLetterRecognitionCount: Float = 0
+    var lastRecognizedLetterSum: Float = 0.0
+    
     @IBOutlet weak var btnCapture: UIButton!
     @IBOutlet weak var lblRecognizedLetterWithAccuracy: UILabel!
     @IBOutlet weak var lblRecognizedText: UILabel!
+    @IBOutlet weak var lblAccuracyMed: UILabel!
+    
+    func updateAveregeRecognitionLabel(for letter:String, withAccuracy accuracy: Float){
+        if self.lastRecognizedLetter != letter {
+            self.lblAccuracyMed.text?.append("\(lastRecognizedLetter) : " + String(format: "%.2f%", (self.lastRecognizedLetterSum / self.lastRecognizedLetterRecognitionCount)*100) + "\(self.lastRecognizedLetterRecognitionCount) x " + "\n")
+            self.lastRecognizedLetterRecognitionCount = 0
+            self.lastRecognizedLetterSum = 0
+            self.lastRecognizedLetter = letter
+            print(self.lblAccuracyMed.text!)
+        }
+        
+        self.navigationItem.title = String(format: "%.2f%", (self.lastRecognizedLetterSum / self.lastRecognizedLetterRecognitionCount)*100)
+        self.lastRecognizedLetterRecognitionCount = self.lastRecognizedLetterRecognitionCount + 1
+        self.lastRecognizedLetterSum = lastRecognizedLetterSum + accuracy
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
