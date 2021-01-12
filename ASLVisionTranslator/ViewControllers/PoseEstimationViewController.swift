@@ -36,7 +36,7 @@ class PoseEstimationViewController: UIViewController {
     
     func updateAveregeRecognitionLabel(for letter:String, withAccuracy accuracy: Float){
         if self.lastRecognizedLetter != letter {
-            self.lblAccuracyMed.text?.append("\(lastRecognizedLetter) : " + String(format: "%.2f%", (self.lastRecognizedLetterSum / self.lastRecognizedLetterRecognitionCount)*100) + "\(self.lastRecognizedLetterRecognitionCount) x " + "\n")
+            self.lblAccuracyMed.text?.append("\(lastRecognizedLetter) : " + String(format: "%.2f%", (self.lastRecognizedLetterSum / self.lastRecognizedLetterRecognitionCount)*100) + "Count: \(self.lastRecognizedLetterRecognitionCount) x " + "\n")
             self.lastRecognizedLetterRecognitionCount = 0
             self.lastRecognizedLetterSum = 0
             self.lastRecognizedLetter = letter

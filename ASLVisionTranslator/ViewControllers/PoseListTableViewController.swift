@@ -21,23 +21,12 @@ class PoseListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         loadPosesList()
-        
          self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
     func loadPosesList(){
         self.savedPoses = PoseDataManager.shared.loadData()
-        
-//        let defaults = UserDefaults.standard
-//        if let savedPosesFromDefaults = defaults.object(forKey: "savedLetterPoses") as? Data {
-//            let decoder = JSONDecoder()
-//            if let loadedPoses = try? decoder.decode([ASLLetterPose].self, from: savedPosesFromDefaults) {
-//                self.savedPoses = loadedPoses
-//            }
-//        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,7 +56,30 @@ class PoseListTableViewController: UITableViewController {
         return cell
     }
     
-
+    func resetSavedPoses(){
+        PoseDataManager.shared.deleteAll()
+        
+        let result = PoseDataManager.shared.saveNewData()
+        let _ = result.map { if $0 == 1 {
+            self.loadPosesList()
+        }}
+    }
+    
+    @IBAction func resetAll(_ sender: Any) {
+        let ac = UIAlertController(title: "Potvrzení", message: "Opravdu chcete nahradit stávající uložené pózy? Stávající budou odstraněny a bude nahrán výchozí seznam s abecedou.", preferredStyle: .alert)
+        
+        let submitAction = UIAlertAction(title: "Ano", style: .destructive) { _ in
+            self.resetSavedPoses()
+        }
+        let cancelAction = UIAlertAction(title: "Zrušit", style: .default){
+            [unowned ac] _ in
+            ac.dismiss(animated: true, completion: nil)
+        }
+        ac.addAction(submitAction)
+        ac.addAction(cancelAction)
+        present(ac, animated: true)
+    }
+    
     @IBAction func newPoseAction(_ sender: Any) {
         let ac = UIAlertController(title: "Název nového znaku", message: nil, preferredStyle: .alert)
         ac.addTextField()

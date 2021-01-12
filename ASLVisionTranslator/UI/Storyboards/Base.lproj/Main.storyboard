@@ -149,11 +149,18 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Poses list" id="QrH-DV-6Xf">
-                        <barButtonItem key="rightBarButtonItem" title="New pose" image="plus" catalog="system" id="9hY-Ws-C0u">
-                            <connections>
-                                <action selector="newPoseAction:" destination="M4d-y6-elH" id="LjR-Mr-T82"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="New pose" image="plus" catalog="system" id="9hY-Ws-C0u">
+                                <connections>
+                                    <action selector="newPoseAction:" destination="M4d-y6-elH" id="LjR-Mr-T82"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Reset All" id="g0k-d5-riz">
+                                <connections>
+                                    <action selector="resetAll:" destination="M4d-y6-elH" id="eTH-9V-qBv"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <segue destination="fZb-h6-Cai" kind="show" identifier="captureNewPose" id="DxP-Wf-ofy"/>
